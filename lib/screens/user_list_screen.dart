@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uji_coba_flutter/controllers/user_controller.dart';
@@ -32,21 +34,23 @@ class UserListScreen extends StatelessWidget {
           return ListView.builder(
             itemCount: userController.userList.length,
             itemBuilder: (context, index) {
+              final user = userController.userList[index];
               return ListTile(
                 leading: CircleAvatar(
                   radius: 40.0,
-                  backgroundImage:
-                      NetworkImage(userController.userList[index].avatar),
+                  backgroundImage: user.avatar.startsWith('http')
+                      ? NetworkImage(user.avatar)
+                      : FileImage(File(user.avatar)) as ImageProvider,
                 ),
                 title: Text(
-                  '${userController.userList[index].firstName} ${userController.userList[index].lastName}',
+                  '${user.firstName} ${user.lastName}',
                   style: const TextStyle(
                     fontSize: 26,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 subtitle: Text(
-                  userController.userList[index].email,
+                  user.email,
                   style: const TextStyle(
                     fontSize: 18,
                   ),
@@ -54,10 +58,12 @@ class UserListScreen extends StatelessWidget {
                 trailing: IconButton(
                   icon: const Icon(Icons.edit),
                   onPressed: () async {
-                    await Get.to(() => UserFormScreen(
-                          user: userController.userList[index],
-                          isEditing: true,
-                        ));
+                    await Get.to(
+                      () => UserFormScreen(
+                        user: user,
+                        isEditing: true,
+                      ),
+                    );
                     userController.fetchUsers();
                   },
                 ),

@@ -9,14 +9,28 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Center(
+          child: Text(
+            'Home',
+            style: TextStyle(
+              fontSize: 26,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.black,
       ),
+      backgroundColor: Theme.of(context).primaryColor,
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Get.to(UserListScreen());
-          },
-          child: const Text('User List'),
+        child: SizedBox(
+          height: 100,
+          width: 100,
+          child: ElevatedButton(
+            onPressed: () {
+              Get.to(UserListScreen());
+            },
+            child: const Text('User List'),
+          ),
         ),
       ),
     );

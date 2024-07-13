@@ -12,6 +12,7 @@ class MyAppView extends StatelessWidget {
       title: 'Test Flutter',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        primaryColor: Colors.yellowAccent,
       ),
       home: const HomeScreen(),
     );
