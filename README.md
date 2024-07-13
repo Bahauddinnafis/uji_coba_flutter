@@ -4,6 +4,16 @@ A new Flutter project.
 
 ## Getting Started
 
+1. Pull Repository
+2. Run pada cmd flutter pub upgrade
+3. Run pada cmd flutter pub outdated
+4. Run flutter doctor
+5. Connect Emulator atau Real Device Android
+6. Klik tombol user list
+7. Edit user list
+8. Tambah user list
+9. Tambah user list dengan profile dari galeri atau camera
+
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
